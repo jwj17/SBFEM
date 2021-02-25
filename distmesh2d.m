@@ -75,6 +75,7 @@ N=size(p,1);                                         % Number of points N
 
 count=0;
 pold=inf;                                            % For first iteration
+figure;
 clf,view(2),axis equal,axis off
 while 1
   count=count+1;

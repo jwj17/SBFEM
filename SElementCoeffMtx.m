@@ -23,7 +23,9 @@ M0 = zeros(nd, nd);
 for ie = 1:size(conn,1) %ltx loop over elements at boundary
     xyEle = xy(conn(ie,:),:); %ltx nodal coordinates of an element \label{Code_subdomainCoeff_nodalcoord} 
     %ltx get element coefficient matrices of an element 
-    mat = MAT{1};
+    if nargin == 4
+        mat = MAT{1};
+    end
     [ ee0, ee1, ee2, em0 ] = EleCoeff2NodeEle(xyEle, mat);
     %ltx local DOFs (in S-element) of an element\refstepcounter{lineno}\label{Code_subdomainCoeff_conn}\addtocounter{lineno}{-1}
     d = reshape([2*conn(ie,:)-1; 2*conn(ie,:)], 1, []);

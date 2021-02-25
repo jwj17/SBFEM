@@ -5,7 +5,7 @@ close all; clearvars; dbstop error;
 probdef = @ProbDefCombinedDam;
 
 %% Mesh generation
-para = {struct('mesher',1, 'h0', 0.2, 'material', 1), struct('mesher',1, 'h0', 0.1, 'material', 2)};
+para = {struct('mesher',1, 'h0', 0.8, 'material', 1), struct('mesher',1, 'h0', 0.4, 'material', 2)};
 dDefs = probdef('Domains');
 [ coord, sdConn, sdSC, sdMat ] = createMultiDomainMesh(dDefs, para);
 

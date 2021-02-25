@@ -31,7 +31,7 @@ switch(mesher)
         BdBox = probdef('BdBox'); %ltx bounding box
         BdBox = [BdBox(1), BdBox(3); BdBox(2) BdBox(4)];
         pfix = probdef('pfix'); %ltx hard points
-        [p, t] = distmesh2d(fd,fh, h0, BdBox, pfix);%???
+        [p, t] = distmesh2d(fd,fh, h0, BdBox, pfix);%
         % %         fprintf('%10.4f  %10.4f;\n',p')
         % %         fprintf('%6d  %6d %6d;\n',t')
         %ltx convert a triangular mesh to a polygon mesh
@@ -70,7 +70,9 @@ end
 
 % add the material attribute
 [r, ~] = size(sdSC);
-sdMat = repmat(para.material, r, 1);
+if isfield(para,'material')
+    sdMat = repmat(para.material, r, 1);
+end
 
 %ltx subdivide one edge into multiple line elements\label{createSBFEMeshSubdiv}
 if nargin > 2 && isfield(para,'nDiv') && para.nDiv > 1

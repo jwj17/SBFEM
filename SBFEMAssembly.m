@@ -34,7 +34,11 @@ for isd = 1:Nsd %ltx loop over S-elements
     LConn = reshape(ic, size(sdConn{isd}) );
     %ltx compute S-element coefficient matrices
     MAT = probdef('MAT');
-    [ E0, E1, E2, M0 ] = SElementCoeffMtx(xy, LConn, mat, MAT(sdMat(isd)));
+    if size(sdMat,1) ~= 1
+        [ E0, E1, E2, M0 ] = SElementCoeffMtx(xy, LConn, mat, MAT(sdMat(isd)));
+    else
+        [ E0, E1, E2, M0 ] = SElementCoeffMtx(xy, LConn, mat);
+    end
     %ltx compute solution for S-element
     [ K, d, v, M] = SElementSlnEigenMethod(E0, E1, E2, M0);
     

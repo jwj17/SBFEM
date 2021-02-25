@@ -6,7 +6,7 @@ function [x] = ProbDefFace(Demand,Arg)
 %output
 %    x       - cell array of output.
 
-para = struct('W', 2, 'L',0.3, 'H',1, 'E', 10E6, 'pos',0.2, 'den',2);
+para = struct('W', 20, 'L',3, 'H',10, 'E', 30E6, 'pos',0.2, 'den',2.4);
 BdBox = [0 para.L+para.W 0 para.H para.L para.W];
 switch(Demand)
     case('TriMesh');x = TriMesh;

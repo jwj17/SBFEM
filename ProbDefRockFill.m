@@ -6,7 +6,7 @@ function [x] = ProbDefRockFill(Demand,Arg)
 %output
 %    x       - cell array of output.
 
-para = struct('L',2, 'H',1, 'E', 10E6, 'pos',0.2, 'den',2);
+para = struct('L',20, 'H',10, 'E', 50E3, 'pos',0.2, 'den',2);
 BdBox = [0 2*para.L 0 para.H para.L];
 switch(Demand)
     case('TriMesh');x = TriMesh;

@@ -49,9 +49,13 @@ function varargout = SBFEPoly2NSolver(probdef, ...
 %ltx {\bf Material}: elasticity matrix and mass density\label{SBFEPoly2NMaterial}
 mat = probdef('MAT'); %ltx get material constants
 
-
 %ltx {\bf S-element solution and global stiffness and mass matrix}\label{SBFEPoly2NSubDm}
-[sdSln, K, M] = SBFEMAssembly(probdef, coord, sdConn, sdSC, mat, sdMat);
+if nargin == 6
+    [sdSln, K, M] = SBFEMAssembly(probdef, coord, sdConn, sdSC, mat, sdMat);
+else
+    sdMat = 1;
+    [sdSln, K, M] = SBFEMAssembly(probdef, coord, sdConn, sdSC, mat, sdMat);
+end
 
 if nargin < 5
     opt.type = 'STATICS';
